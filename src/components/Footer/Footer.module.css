@@ -1,0 +1,13 @@
+.footer {
+  display: flex;
+  height: 228px;
+  padding: var(--padding-main);
+  background-color: var(--color-dark-gray);
+}
+
+.container {
+  width: 100%;
+  min-width: 320px;
+  max-width: 1440px;
+  margin: 0 auto;
+}

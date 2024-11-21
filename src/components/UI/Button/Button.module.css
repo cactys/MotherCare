@@ -1,0 +1,30 @@
+.button {
+  display: flex;
+  border: 2px solid;
+  border-color: var(--color-main);
+  padding: 10px 30px;
+  color: var(--color-main);
+  font-weight: var(--font-w-sbold);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-sm);
+  text-transform: uppercase;
+  transition: all .15s ease-in-out;
+}
+
+.button:hover {
+  border-color: var(--color-hover);
+  color: var(--color);
+  background-color: var(--color-hover);
+}
+
+.otherButton {
+  border-color: var(--color-hover);
+  color: var(--color);
+  background-color: var(--color-hover);
+}
+
+.otherButton:hover {
+  border-color: var(--color-hover-dark);
+  color: var(--color);
+  background-color: var(--color-hover-dark);
+}

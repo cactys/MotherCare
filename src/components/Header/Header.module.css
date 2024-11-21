@@ -1,0 +1,38 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex: 0 auto;
+  justify-content: space-between;
+  padding: var(--padding-main);
+  background-color: var(--color);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-width: 320px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.logo {
+  float: left;
+  width: 32px;
+  height: 32px;
+}
+
+.navContainer {
+  display: flex;
+  align-items: center;
+  column-gap: 24px;
+}
+
+.headerNav {
+  display: flex;
+  align-items: center;
+  column-gap: 24px;
+}

@@ -1,0 +1,25 @@
+.sectionMain {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 80vh;
+}
+
+.container {
+  width: 100%;
+  min-width: 320px;
+  max-width: 1440px;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+.title {
+
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
