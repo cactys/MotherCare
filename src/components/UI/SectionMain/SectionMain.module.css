@@ -2,24 +2,41 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  height: 80vh;
+  height: 90vh;
+  padding: 20px;
 }
 
 .container {
   width: 100%;
   min-width: 320px;
-  max-width: 1440px;
-  display: flex;
+  max-width: 1024px;
   margin: 0 auto;
+  padding: 0 10px;
+}
+
+.header {
+  display: flex;
   flex-direction: column;
+  row-gap: 10px;
 }
 
 .title {
+  color: var(--color);
+  font-weight: var(--font-w-bold);
+  font-size: var(--font-size-xxl);
+  line-height: var(--line-height-xxl);
+}
 
+.subTitle {
+  color: var(--color);
+  font-weight: var(--font-w-regular);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-lg);
 }
 
 .buttonContainer {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  margin: 20px 0 0;
 }

@@ -1,0 +1,44 @@
+.sectionProduct {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--color-alt);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+  width: 100%;
+  min-width: 320px;
+  max-width: 1024px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 80px 10px;
+}
+
+.cardProduct {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 20px;
+  max-width: 502px;
+  margin-right: 20px;
+}
+
+.title {
+  color: var(--color-hover);
+  font-weight: var(--font-w-sbold);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-s);
+  text-transform: uppercase;
+}
+
+.subTitle {
+  color: var(--color-main);
+  font-weight: var(--font-w-sbold);
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-xl);
+}
+
