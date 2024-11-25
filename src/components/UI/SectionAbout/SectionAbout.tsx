@@ -1,4 +1,4 @@
-import LazyShow from '../LazyShow/LazyShow';
+import { LazyShowY } from '../LazyShow/LazyShow';
 import styles from './SectionAbout.module.css';
 
 import heroImage from '@assets/images/hero_image.webp';
@@ -6,12 +6,14 @@ import heroImage from '@assets/images/hero_image.webp';
 const SectionAbout = () => {
   return (
     <section className={styles.sectionAbout}>
-      <div className={styles.container}>
-        <div className={styles.cardAbout}>
-          <LazyShow>
+      <LazyShowY className={styles.container} >
+        <>
+          <div className={styles.cardAbout}>
             <div className={styles.mainContent}>
               <h2 className={styles.title}>Примите минимализм</h2>
-              <h3 className={styles.subTitle}>Стильная одежда для мам и малышей</h3>
+              <h3 className={styles.subTitle}>
+                Стильная одежда для мам и малышей
+              </h3>
               <p>
                 В Mother Care мы переосмысливаем моду материнства, предлагая
                 тщательно подобранную одежду для мам и их малышей. Расположенный
@@ -23,15 +25,15 @@ const SectionAbout = () => {
                 красоте простоты и радости материнства.
               </p>
             </div>
-          </LazyShow>
-          <LazyShow>
-            <a href="#" className={styles.link}>Свяжитесь с нами</a>
-          </LazyShow>
-        </div>
-        <figure className={styles.figure}>
-          <img alt="О нас" src={heroImage} className={styles.img} />
-        </figure>
-      </div>
+            <a href="#" className={styles.link}>
+              Свяжитесь с нами
+            </a>
+          </div>
+          <figure className={styles.figure}>
+            <img alt="О нас" src={heroImage} className={styles.img} />
+          </figure>
+        </>
+      </LazyShowY>
     </section>
   );
 };

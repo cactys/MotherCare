@@ -1,25 +1,21 @@
-import LazyShow from '../LazyShow/LazyShow';
-import ProductCard from '../ProductCard/ProductCard';
+import { LazyShowY } from '../LazyShow/LazyShow';
+import Slider from '../Slider/Slider';
 import styles from './SectionProduct.module.css';
 
 const SectionProduct = () => {
   return (
     <section className={styles.sectionProduct}>
-      <div className={styles.container}>
-        <LazyShow>
+      <LazyShowY className={styles.container}>
+        <>
           <div className={styles.cardProduct}>
             <h2 className={styles.title}>Стильный комфорт</h2>
             <h3 className={styles.subTitle}>
               Улучшите свой опыт материнства с помощью наших дизайнов.
             </h3>
           </div>
-        </LazyShow>
-        <LazyShow>
-          <ul>
-            <ProductCard />
-          </ul>
-        </LazyShow>
-      </div>
+          <Slider />
+        </>
+      </LazyShowY>
     </section>
   );
 };

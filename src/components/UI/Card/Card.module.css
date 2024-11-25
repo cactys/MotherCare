@@ -1,0 +1,84 @@
+.card {
+  position: relative;
+  box-shadow: var(--shadow);
+  height: 100%;
+}
+
+.article {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {}
+
+.figure {
+  display: flex;
+  height: 220px;
+}
+
+.img {
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  padding: 20px;
+}
+
+.cardTitle {
+  position: relative;
+  display: block;
+  color: var(--color-main);
+  font-weight: var(--font-w-sbold);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  transition: var(--transition);
+}
+
+.card:hover .cardTitle {
+  color: var(--color-hover);
+}
+
+.cardSvg {
+  display: inline-block;
+  width: fit-content;
+  height: 16px;
+  margin-left: 2px;
+  vertical-align: middle;
+  overflow: hidden;
+  transition: var(--transition);
+  transform: translateY(-1px);
+}
+
+.card:hover .cardSvg {
+  fill: var(--color-hover);
+  transform: translateY(-1px) translateX(4px);
+}
+
+.cardSubtitle {
+  font-weight: var(--font-w-regular);
+  font-size: var(--font-size-main);
+  line-height: var(--line-height-main);
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
+}
+
+.cardCopy {}
+
+.cardLink {
+  font-size: 0;
+}
+
+.cardLink::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}

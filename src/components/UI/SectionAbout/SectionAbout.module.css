@@ -51,7 +51,8 @@
   color: var(--color-base);
   line-height: var(--line-height-s);
   transition: var(--transition);
-  display: inline-flex;
+  display: inline-block;
+  width: fit-content;
   position: relative;
   padding: 6px 0;
 }

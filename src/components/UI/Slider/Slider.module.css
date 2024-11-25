@@ -1,0 +1,55 @@
+.slider {
+  display: grid;
+  grid-template-columns: 30px 1fr 30px;
+  align-items: center;
+  width: 100%;
+}
+
+.arrowButton {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 100%;
+  padding: 0;
+  opacity: 1;
+  font-size: 0px;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.arrowButton:hover {
+  opacity: 0.3;
+  background-color: var(--color-base);
+}
+
+.arrowImage {
+  width: 22px;
+  height: 22px;
+  fill: var(--color-main);
+}
+
+.arrowLeft {
+  transform: rotate(180deg);
+}
+
+.sliderList {
+  display: flex;
+  flex-wrap: nowrap;
+  column-gap: 20px;
+  padding: 20px 20px;
+  overflow: hidden;
+  height: fit-content;
+  mask-image: var(--l-gradient);
+}
+
+.sliderItem {
+  min-width: 320px;
+  transition-duration: .4s;
+  transition-property: transform;
+  transform: perspective(1px) translateZ(0);
+}
+
+.sliderItem:hover {
+  transform: scale(1.05);
+}
