@@ -4,6 +4,7 @@ import Footer from '@components/Footer/Footer';
 import Main from '@components/Main/Main';
 import styles from './App.module.css';
 import { CardDataContextProvider } from '@/contexts/CardDataContext';
+import { SliderContextProvider } from '@/contexts/SliderContext';
 
 function App() {
   return (
@@ -11,7 +12,9 @@ function App() {
       <Header />
       <CurrentPageContextProvider>
         <CardDataContextProvider>
-          <Main />
+          <SliderContextProvider>
+            <Main />
+          </SliderContextProvider>
         </CardDataContextProvider>
       </CurrentPageContextProvider>
       <Footer />

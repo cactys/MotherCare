@@ -1,46 +1,61 @@
-import { useContext, useState } from 'react';
-import IconSvg from '../IconSvg/IconSvg';
-import { LazyShowY } from '../LazyShow/LazyShow';
-import Card from '../Card/Card';
-import styles from './Slider.module.css';
 import { CardDataContext } from '@/contexts/CardDataContext';
+import { SliderContext } from '@/contexts/SliderContext';
+import { TSliderProps } from '@/services/types';
+import { TouchEvent, useContext, useEffect, useState } from 'react';
 
-const Slider = () => {
+const Slider = ({
+  children,
+  nextArrow,
+  prevArrow,
+  autoplay,
+  speed,
+  className,
+  sliderToScroll = 1,
+}: TSliderProps) => {
+  const sliderContext = useContext(SliderContext);
   const cardData = useContext(CardDataContext);
-  const [slider, setSlider] = useState(0);
-  const [touchPosition, setTouchPosition] = useState(null);
+  const [touchPosition, setTouchPosition] = useState<number | null>(null);
 
-  
+  const handleTouchStart = (e: TouchEvent<HTMLDivElement>) => {
+    const touchDown = e.touches[0].clientX;
+
+    setTouchPosition(touchDown);
+  };
+
+  const handleTouchMove = (e: TouchEvent<HTMLDivElement>) => {
+    if (touchPosition === null) return;
+
+    const currentPosition = e.touches[0].clientX;
+    const direction = touchPosition - currentPosition;
+
+    if (direction < 10) sliderContext?.changeSlide(sliderToScroll);
+    if (direction > -10) sliderContext?.changeSlide(-sliderToScroll);
+
+    setTouchPosition(null);
+  };
+
+  useEffect(() => {
+    if (!autoplay) return;
+
+    const interval = setInterval(() => {
+      sliderContext?.changeSlide(sliderToScroll);
+    }, speed);
+
+    console.log(sliderContext?.slide);
+
+    return () => clearInterval(interval);
+  }, [cardData?.length, sliderContext?.slide]);
 
   return (
-    <LazyShowY className={styles.slider}>
-      <>
-        <button className={styles.arrowButton} type="button">
-          Arrow Left
-          <IconSvg
-            className={`${styles.arrowImage} ${styles.arrowLeft}`}
-            id="arrow-svg"
-          />
-        </button>
-        <ul className={styles.sliderList}>
-          {cardData?.map((item) => (
-            <li key={item.id} className={styles.sliderItem}>
-              <Card
-                img={item.img}
-                title={item.title}
-                subtitle={item.subtitle}
-                copy={item.copy}
-                isModal={false}
-              />
-            </li>
-          ))}
-        </ul>
-        <button className={styles.arrowButton} type="button">
-          Arrow Right
-          <IconSvg className={styles.arrowImage} id="arrow-svg" />
-        </button>
-      </>
-    </LazyShowY>
+    <div
+      className={className}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+    >
+      {prevArrow}
+      {children}
+      {nextArrow}
+    </div>
   );
 };
 

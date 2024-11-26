@@ -33,5 +33,5 @@
 
   --transition: all 0.4s ease-in-out;
   --shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.15);
-  --l-gradient: linear-gradient(90deg, #000 95%, transparent 100%);
+  --l-gradient: linear-gradient(to right, #000 80%, transparent 100% );
 }

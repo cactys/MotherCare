@@ -1,5 +1,5 @@
 import { LazyShowY } from '../LazyShow/LazyShow';
-import Slider from '../Slider/Slider';
+import ProductSlider from '../ProductSlider/ProductSlider';
 import styles from './SectionProduct.module.css';
 
 const SectionProduct = () => {
@@ -13,7 +13,7 @@ const SectionProduct = () => {
               Улучшите свой опыт материнства с помощью наших дизайнов.
             </h3>
           </div>
-          <Slider />
+          <ProductSlider />
         </>
       </LazyShowY>
     </section>
