@@ -17,7 +17,6 @@ const Arrow = ({
   onClickNext?: () => void;
   isNext?: boolean;
 }) => {
-  const sliderContext = useContext(SliderContext);
 
   const onChangSlide = () => {
     if (isNext) {

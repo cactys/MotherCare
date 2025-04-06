@@ -3,6 +3,10 @@ export type ComplexObject = {
   setCurrentPage: (arg0: string) => void;
 };
 
+export type TPage = {
+  home: React.ReactElement;
+}
+
 export type TComplexSliderContextObject = {
   goToSlide: (arg0: number) => void;
   changeSlide: (arg0: number) => void;
