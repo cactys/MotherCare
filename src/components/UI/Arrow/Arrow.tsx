@@ -1,6 +1,4 @@
-import { useContext } from 'react';
 import IconSvg from '../IconSvg/IconSvg';
-import { SliderContext } from '@/contexts/SliderContext';
 
 const Arrow = ({
   classNameBtn,
