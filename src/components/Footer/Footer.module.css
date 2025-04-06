@@ -1,13 +1,137 @@
 .footer {
   display: flex;
-  height: 228px;
   padding: var(--padding-main);
   background-color: var(--color-dark-gray);
+  color: var(--color);
 }
 
 .container {
   width: 100%;
-  min-width: 320px;
-  max-width: 1440px;
+  min-width: var(--container-width-min);
+  max-width: var(--container-width-md);
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xl);
+}
+
+.footerContent {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--gap-xl);
+}
+
+.footerColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-lg);
+}
+
+.logo {
+  width: var(--icon-size-m);
+  height: var(--icon-size-m);
+  fill: var(--color);
+}
+
+.description {
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-m);
+  color: var(--color-alt);
+}
+
+.columnTitle {
+  font-size: var(--font-size-m);
+  font-weight: var(--font-w-sbold);
+  line-height: var(--line-height-m);
+  color: var(--color);
+}
+
+.footerNav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-s);
+}
+
+.footerLink {
+  color: var(--color-alt);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-s);
+  transition: var(--transition);
+}
+
+.footerLink:hover {
+  color: var(--color-hover);
+}
+
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-s);
+}
+
+.contactList li {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-xs);
+}
+
+.contactIcon {
+  width: var(--icon-size-xs);
+  height: var(--icon-size-xs);
+  fill: var(--color-alt);
+}
+
+.contactLink,
+.contactText {
+  color: var(--color-alt);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-s);
+  transition: var(--transition);
+}
+
+.contactLink:hover {
+  color: var(--color-hover);
+}
+
+.socialLinks {
+  display: flex;
+  gap: var(--gap-m);
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--icon-size-lg);
+  height: var(--icon-size-lg);
+  border-radius: var(--border-radius-circle);
+  background-color: var(--color-alt);
+  transition: var(--transition);
+}
+
+.socialLink:hover {
+  background-color: var(--color-hover);
+}
+
+.socialIcon {
+  width: var(--icon-size-s);
+  height: var(--icon-size-s);
+  fill: var(--color-base);
+  transition: var(--transition);
+}
+
+.socialLink:hover .socialIcon {
+  fill: var(--color);
+}
+
+.footerBottom {
+  padding-top: var(--padding-lg);
+  border-top: 1px solid var(--color-alt);
+}
+
+.copyright {
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-s);
+  color: var(--color-alt);
+  text-align: center;
 }

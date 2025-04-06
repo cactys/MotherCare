@@ -5,26 +5,37 @@ import { SliderContext } from '@/contexts/SliderContext';
 const Arrow = ({
   classNameBtn,
   classNameIcon,
+  classNameIconPrev,
+  onClickPrev,
+  onClickNext,
   isNext,
 }: {
-  classNameBtn: string;
-  classNameIcon: string;
+  classNameBtn?: string;
+  classNameIcon?: string;
+  classNameIconPrev?: string;
+  onClickPrev?: () => void;
+  onClickNext?: () => void;
   isNext?: boolean;
 }) => {
   const sliderContext = useContext(SliderContext);
 
   const onChangSlide = () => {
     if (isNext) {
-      sliderContext?.changeSlide(1);
+      onClickNext ? onClickNext() : '';
     } else {
-      sliderContext?.changeSlide(-1);
+      onClickPrev ? onClickPrev() : '';
     }
   };
 
   return (
     <button className={classNameBtn} type="button" onClick={onChangSlide}>
       Arrow Right
-      <IconSvg className={classNameIcon} id="arrow-svg" />
+      <IconSvg
+        className={`${classNameIcon} ${
+          classNameIconPrev ? classNameIconPrev : ''
+        }`}
+        id="arrow-svg"
+      />
     </button>
   );
 };

@@ -20,8 +20,6 @@ export const SliderContextProvider = ({
   const cardData = useContext(CardDataContext);
 
   const [slide, setSlide] = useState(0);
-  // const [slidesCount, setSlidesCount] = useState(0);
-  // const [slideNumber, setSlideNumber] = useState(0);
 
   const changeSlide = (direction: number = 1) => {
     let sliderNumber = 0;
@@ -43,10 +41,6 @@ export const SliderContextProvider = ({
     () => ({
       goToSlide,
       changeSlide,
-      // slidesCount,
-      // slideNumber,
-      // setSlidesCount,
-      // setSlideNumber,
       slide,
     }),
     [slide]

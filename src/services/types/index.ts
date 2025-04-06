@@ -19,10 +19,15 @@ export type TCard = {
 };
 
 export type TSliderProps = {
-  sliderToScroll?: number | undefined;
+  sliderToShow: number;
   autoplay?: boolean;
-  speed?: number | undefined;
+  speed?: number;
   className?: string;
+  infiniteLoop?: boolean;
+  classNameBtn?: string;
+  classNameIcon?: string;
+  classNameIconPrev?: string;
+  classNameList?: string;
   nextArrow?: JSX.Element;
   prevArrow?: JSX.Element;
   children: JSX.Element;

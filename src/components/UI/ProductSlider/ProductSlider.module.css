@@ -42,14 +42,3 @@
   height: fit-content;
   mask-image: var(--l-gradient);
 }
-
-.sliderItem {
-  min-width: 320px;
-  transition-duration: .4s;
-  transition-property: transform;
-  transform: perspective(1px) translateZ(0);
-}
-
-.sliderItem:hover {
-  transform: scale(1.05);
-}

@@ -1,8 +1,8 @@
 .button {
   display: flex;
-  border: 2px solid;
+  border: var(--border-width-m) solid;
   border-color: var(--color-main);
-  padding: 10px 30px;
+  padding: var(--padding-s) var(--padding-xl);
   color: var(--color-main);
   font-weight: var(--font-w-sbold);
   font-size: var(--font-size-s);

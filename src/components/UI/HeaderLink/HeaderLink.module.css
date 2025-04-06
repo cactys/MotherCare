@@ -3,7 +3,7 @@
   font-size: var(--font-size-xs);
   line-height: var(--line-height-s);
   font-weight: var(--font-w-medium);
-  padding: 6px 0;
+  padding: var(--padding-xs) 0;
   position: relative;
   transition: var(--transition);
 }
@@ -11,7 +11,7 @@
 .headerLink::after {
   content: '';
   display: block;
-  height: 2px;
+  height: var(--border-width-s);
   position: absolute;
   background-color: var(--color-hover);
   width: 100%;

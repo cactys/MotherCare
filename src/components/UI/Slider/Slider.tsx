@@ -1,60 +1,100 @@
-import { CardDataContext } from '@/contexts/CardDataContext';
-import { SliderContext } from '@/contexts/SliderContext';
-import { TSliderProps } from '@/services/types';
-import { TouchEvent, useContext, useEffect, useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import styles from './Slider.module.css';
+import classNames from 'classnames';
 
-const Slider = ({
+interface SliderProps {
+  children: React.ReactNode[];
+  autoplay?: boolean;
+  speed?: number;
+}
+
+const Slider: React.FC<SliderProps> = ({
   children,
-  nextArrow,
-  prevArrow,
-  autoplay,
-  speed,
-  className,
-  sliderToScroll = 1,
-}: TSliderProps) => {
-  const sliderContext = useContext(SliderContext);
-  const cardData = useContext(CardDataContext);
-  const [touchPosition, setTouchPosition] = useState<number | null>(null);
+  autoplay = true,
+  speed = 5000,
+}) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoplay, setIsAutoplay] = useState(autoplay);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
 
-  const handleTouchStart = (e: TouchEvent<HTMLDivElement>) => {
-    const touchDown = e.touches[0].clientX;
+  const moveToNext = useCallback(() => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % children.length);
+  }, [children.length]);
 
-    setTouchPosition(touchDown);
-  };
+  const moveToPrev = useCallback(() => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + children.length) % children.length);
+  }, [children.length]);
 
-  const handleTouchMove = (e: TouchEvent<HTMLDivElement>) => {
-    if (touchPosition === null) return;
-
-    const currentPosition = e.touches[0].clientX;
-    const direction = touchPosition - currentPosition;
-
-    if (direction < 10) sliderContext?.changeSlide(sliderToScroll);
-    if (direction > -10) sliderContext?.changeSlide(-sliderToScroll);
-
-    setTouchPosition(null);
-  };
+  const moveToIndex = useCallback((index: number) => {
+    setCurrentIndex(index);
+  }, []);
 
   useEffect(() => {
-    if (!autoplay) return;
+    let intervalId: NodeJS.Timeout;
+    if (isAutoplay) {
+      intervalId = setInterval(moveToNext, speed);
+    }
+    return () => clearInterval(intervalId);
+  }, [isAutoplay, moveToNext, speed]);
 
-    const interval = setInterval(() => {
-      sliderContext?.changeSlide(sliderToScroll);
-    }, speed);
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.touches[0].clientX);
+    setIsAutoplay(false);
+  };
 
-    console.log(sliderContext?.slide);
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStart === null) return;
 
-    return () => clearInterval(interval);
-  }, [cardData?.length, sliderContext?.slide]);
+    const touchEnd = e.changedTouches[0].clientX;
+    const diff = touchStart - touchEnd;
+
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        moveToNext();
+      } else {
+        moveToPrev();
+      }
+    }
+    setTouchStart(null);
+    setIsAutoplay(autoplay);
+  };
+
+  const getItemClass = (index: number) => {
+    if (index === currentIndex) return styles.active;
+    if (index === (currentIndex - 1 + children.length) % children.length) return styles.prev;
+    if (index === (currentIndex + 1) % children.length) return styles.next;
+    return '';
+  };
 
   return (
-    <div
-      className={className}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-    >
-      {prevArrow}
-      {children}
-      {nextArrow}
+    <div className={styles.sliderContainer}>
+      <div
+        className={styles.sliderContent}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
+        {children.map((child, index) => (
+          <div
+            key={index}
+            className={classNames(styles.sliderItem, getItemClass(index))}
+          >
+            {child}
+          </div>
+        ))}
+      </div>
+      <div className={styles.indicators}>
+        {children.map((_, index) => (
+          <button
+            key={index}
+            className={classNames(
+              styles.indicator,
+              index === currentIndex && styles.active
+            )}
+            onClick={() => moveToIndex(index)}
+            aria-label={`Перейти к слайду ${index + 1}`}
+          />
+        ))}
+      </div>
     </div>
   );
 };

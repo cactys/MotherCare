@@ -3,21 +3,21 @@
   justify-content: flex-start;
   align-items: center;
   height: 90vh;
-  padding: 20px;
+  padding: var(--padding-main);
 }
 
 .container {
   width: 100%;
-  min-width: 320px;
-  max-width: 1024px;
+  min-width: var(--container-width-min);
+  max-width: var(--container-width-md);
   margin: 0 auto;
-  padding: 0 10px;
+  padding: 0 var(--padding-s);
 }
 
 .header {
   display: flex;
   flex-direction: column;
-  row-gap: 10px;
+  row-gap: var(--card-gap);
 }
 
 .title {
@@ -38,5 +38,5 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin: 20px 0 0;
+  margin: var(--padding-main) 0 0;
 }

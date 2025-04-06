@@ -1,7 +1,7 @@
 .header {
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: var(--z-index-header);
   display: flex;
   flex: 0 auto;
   justify-content: space-between;
@@ -14,25 +14,25 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  min-width: 320px;
-  max-width: 1024px;
+  min-width: var(--container-width-min);
+  max-width: var(--container-width-md);
   margin: 0 auto;
 }
 
 .logo {
   float: left;
-  width: 32px;
-  height: 32px;
+  width: var(--icon-size-m);
+  height: var(--icon-size-m);
 }
 
 .navContainer {
   display: flex;
   align-items: center;
-  column-gap: 24px;
+  column-gap: var(--gap-xl);
 }
 
 .headerNav {
   display: flex;
   align-items: center;
-  column-gap: 24px;
+  column-gap: var(--gap-xl);
 }
